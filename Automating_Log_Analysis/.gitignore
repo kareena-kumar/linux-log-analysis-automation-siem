@@ -1,2 +1,5 @@
 # Log files
 Automating_Log_Analysis\Linux_2k.log
+
+# Generated analysis output
+Automating_Log_Analysis/suspicious_log_entries.csv
