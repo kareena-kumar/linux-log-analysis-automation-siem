@@ -27,3 +27,11 @@ for entry_type, entry in suspicious_entries:
     print(f"[{entry_type}] {entry}")
 
 print(f"\nTotal suspicious entries found:{len(suspicious_entries)}")
+
+# Step 5: Save results to a CSV file
+import csv
+with open("suspicious_log_entries.csv", "w", newline="") as csvfile:
+    csv_writer = csv.writer(csvfile)
+    csv_writer.writerow(["Entry Type", "Log Entry"])
+    for entry_type, entry in suspicious_entries:
+        csv_writer.writerow([entry_type, entry])
