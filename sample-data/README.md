@@ -10,9 +10,11 @@ Download it here:
 
 
 
-https://github.com/logpai/loghub/blob/master/Linux/Linux\_2k.log
+https://github.com/logpai/loghub/tree/master/Linux
 
 
 
 The dataset is not included in this repository.
+
+
 
