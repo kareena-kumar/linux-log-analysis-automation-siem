@@ -16,6 +16,18 @@ Using a publicly available Linux authentication dataset from **LogHub**, the pro
 
 ---
 
+## Technologies Used
+
+| Technology                          | Purpose                                                                  |
+| ----------------------------------- | ------------------------------------------------------------------------ |
+| **Python**                          | Automated Linux log analysis and exported suspicious events to CSV       |
+| **Splunk Enterprise**               | SIEM analysis, event correlation, and authentication log investigation   |
+| **Linux Authentication Logs**       | Investigated SSH authentication failures and brute-force activity        |
+| **Git & GitHub**                    | Version control, documentation, and project management                   |
+| **CSV**                             | Structured export of suspicious authentication events for reporting      |
+
+---
+
 ## Skills Demonstrated
 
 * **Linux log analysis**
