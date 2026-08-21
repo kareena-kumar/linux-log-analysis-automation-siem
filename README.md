@@ -1,247 +1,203 @@
-\# Linux Log Analysis, Automation \& SIEM Visualisation
+# Linux Log Analysis, Automation & SIEM Visualisation
 
-> A cybersecurity project demonstrating SOC analyst workflows through manual Linux log investigation, Python automation, and Splunk SIEM analysis.
+> A cybersecurity project demonstrating **SOC analyst workflows** through manual Linux log investigation, Python automation, and Splunk SIEM analysis.
 
+---
 
-\## Overview
+## Overview
 
+This project demonstrates how a **Security Operations Centre (SOC) analyst** can investigate Linux authentication logs using three complementary approaches:
 
-This project demonstrates how a Security Operations Centre (SOC) analyst can investigate Linux authentication logs using three complementary approaches:
+1. **Manual log investigation**
+2. **Python automation**
+3. **Splunk SIEM analysis and visualisation**
 
+Using a publicly available Linux authentication dataset from **LogHub**, the project identifies repeated SSH brute-force attempts, extracts **Indicators of Compromise (IoCs)**, automates suspicious-event detection using Python, and visualises attack patterns using **Splunk Enterprise**.
 
-\- Manual log investigation
+---
 
-\- Python automation
+## Skills Demonstrated
 
-\- Splunk SIEM visualisation
+* **Linux log analysis**
+* **SSH authentication investigation**
+* **Python automation**
+* **Splunk Enterprise**
+* **SIEM monitoring**
+* **Threat detection**
+* **Indicator of Compromise (IoC) identification**
+* **Incident investigation and reporting**
 
+---
 
-Using a real-world Linux authentication dataset from LogHub, I identified repeated SSH brute-force attempts, extracted indicators of compromise (IoCs), automated detection with Python, and visualised attack patterns in Splunk Enterprise.
-
-
-\---
-
-
-\## Skills Demonstrated
-
-
-\- Linux log analysis
-
-\- SSH authentication investigation
-
-\- Python automation
-
-\- Splunk Enterprise
-
-\- SIEM monitoring
-
-\- Threat detection
-
-\- IOC identification
-
-\- Incident reporting
-
-
-\---
-
-
-\## Project Structure
-
+## Project Structure
 
 ```text
-
 linux-log-analysis-automation-siem/
-
+│
 ├── src/
-
-│   └── log\_analysis.py
-
+│   └── log_analysis.py
+│
 ├── reports/
-
-│   ├── project\_report.pdf
-
-│   └── suspicious\_log\_entries.csv
-
+│   ├── project_report.pdf
+│   └── suspicious_log_entries.csv
+│
 ├── screenshots/
-
+│
 ├── sample-data/
-
 │   └── README.md
-
+│
 ├── .gitignore
-
 ├── README.md
-
 └── requirements.txt
-
 ```
 
+---
 
-\---
+# Stage 1 – Manual Log Analysis
 
+The first stage involved manually reviewing raw Linux authentication logs to identify suspicious authentication activity and potential indicators of compromise.
 
-\## Stage 1 – Manual Log Analysis
+## Key Findings
 
+* Identified a **high-volume, automated SSH brute-force attack**.
+* Repeated failed login attempts targeted both the `root` account and unknown usernames.
+* Multiple authentication attempts originated from external IP addresses.
 
-Reviewed raw Linux authentication logs to identify suspicious login activity.
+### Primary Indicators of Compromise
 
+* **IP Address:** `218.188.2.4`
+* **Hostname:** `220-135-151-1.hinet-ip.hinet.net`
 
-\### Key Findings
+## Recommended Actions
 
+Based on the observed activity, the following security controls were recommended:
 
-\- High-volume automated SSH brute-force attack detected.
+* Block identified malicious IP addresses.
+* Implement automated authentication rate limiting.
+* Deploy intrusion prevention tools such as **Fail2Ban**.
+* Monitor authentication logs for repeated failed-login patterns.
 
-\- Repeated failed login attempts targeted both `root` and unknown usernames.
+---
 
-\- Primary Indicators of Compromise (IoCs):
+# Stage 2 – Python Automation
 
-&#x20; - `218.188.2.4`
+The second stage automated the manual investigation process using Python.
 
-&#x20; - `220-135-151-1.hinet-ip.hinet.net`
+The script scans Linux authentication logs for patterns associated with suspicious authentication activity and extracts relevant events for further investigation.
 
+## Detection Features
 
-\### Recommended Actions
+The script identifies:
 
+* **Failed password attempts**
+* **Authentication failures**
+* **Invalid users**
+* Suspicious authentication events from large log files
 
-\- Block malicious IP addresses.
+The detected events are exported to a **CSV file** for further analysis and reporting.
 
-\- Enable automated rate limiting.
+## Result
 
-\- Deploy intrusion prevention tools such as Fail2Ban.
+> **607 suspicious authentication events detected**
 
+This demonstrates how scripting can reduce the time required to manually identify suspicious activity within large log files.
 
-\---
+---
 
+# Stage 3 – Splunk SIEM Analysis
 
-\## Stage 2 – Python Automation
+The third stage involved ingesting the Linux authentication logs into **Splunk Enterprise** to simulate a Security Operations Centre monitoring workflow.
 
+Splunk was used to:
 
-The Python script automatically scans Linux log files for suspicious authentication activity.
+* Search and filter authentication events
+* Aggregate security events
+* Identify repeated authentication attempts
+* Correlate activity by source IP and username
+* Visualise suspicious authentication patterns
 
-
-\### Features
-
-
-\- Detects:
-
-&#x20; - Failed passwords
-
-&#x20; - Authentication failures
-
-&#x20; - Invalid users
-
-\- Processes large log files automatically.
-
-\- Exports suspicious events to CSV.
-
-
-\### Result
-
-
-\- \*\*607 suspicious events detected\*\*
-
-
-\---
-
-
-\## Stage 3 – Splunk SIEM Analysis
-
-
-Logs were ingested into Splunk Enterprise to simulate a Security Operations Centre workflow.
-
-
-\### Example SPL Query
-
+## Example SPL Query
 
 ```spl
-
-index="linux\_logs" source="Linux\_2k.log"
-
+index="linux_logs" source="Linux_2k.log"
 ("Failed password" OR "authentication failure" OR "invalid user" OR "user unknown")
-
 | stats count by rhost user
-
 | sort -count
-
 ```
 
+## Key Findings
 
-\### Key Findings
+* **607 authentication-related events** were identified.
+* **80 attempts** against the `root` account originated from `150.183.249.110`.
+* **23 attempts** originated from `207.243.167.114`.
+* Short bursts of repeated authentication attempts indicated **automated brute-force behaviour**.
 
+---
 
-\- 607 authentication-related events identified.
-
-\- 80 attempts against the `root` account from `150.183.249.110`.
-
-\- 23 attempts from `207.243.167.114`.
-
-\- Short bursts of repeated login attempts indicate automated brute-force behaviour.
-
-
-\---
+# Splunk Screenshots
 
 
-\## Splunk Screenshots
 
+---
 
-> Screenshots can be added later if Splunk is reinstalled.
+# Key Outcomes
 
+| Method                | Outcome                                                       |
+| --------------------- | ------------------------------------------------------------- |
+| **Manual Analysis**   | Identified an SSH brute-force attack and extracted IoCs       |
+| **Python Automation** | Automatically detected **607 suspicious events**              |
+| **Splunk SIEM**       | Aggregated and analysed **607 authentication-related events** |
 
-\- Search results
+Together, these approaches demonstrate how **manual investigation, scripting, and SIEM technologies complement one another in a SOC environment**.
 
-\- Statistics view
+---
 
-\- Dashboard visualisation
+# Dataset
 
+This project uses the publicly available **Linux_2k.log** dataset from **LogHub**.
 
-\---
+The original dataset can be found here:
 
+**[LogHub – Linux Log Dataset](https://github.com/logpai/loghub/tree/master/Linux)**
 
-\## Key Outcomes
+The dataset is **not included in this repository**.
 
+For instructions on obtaining and using the dataset, see:
 
-| Method | Outcome |
+```text
+sample-data/README.md
+```
 
-|--------|---------|
+> **Dataset attribution:** The Linux log dataset is provided by LogHub. This repository uses the dataset for educational and cybersecurity analysis purposes.
 
-| Manual Analysis | Identified SSH brute-force attack |
+---
 
-| Python Automation | 607 suspicious events detected |
+# Future Improvements
 
-| Splunk SIEM | 607 correlated security events |
+Potential extensions to this project include:
 
+* **MITRE ATT&CK technique mapping**
+* **GeoIP enrichment**
+* **Fail2Ban integration**
+* **AI-assisted security alert summarisation**
+* **Automated threat-intelligence enrichment**
+* **Interactive Splunk dashboards**
+* **Automated incident reports**
+* **Real-time log monitoring**
 
-Together these approaches demonstrate how manual investigation, scripting, and SIEM tools complement each other during security monitoring.
+---
 
+## Project Takeaways
 
-\---
+This project provided practical experience across the security monitoring lifecycle, from **raw log investigation and threat identification through to automated detection and SIEM-based visualisation**.
 
+It demonstrates the ability to:
 
-\## Dataset
+* Investigate security events using Linux logs
+* Identify suspicious authentication behaviour
+* Extract and document IoCs
+* Automate repetitive security-analysis tasks with Python
+* Query and analyse security events using Splunk
+* Communicate technical findings through structured reporting
 
-
-This project uses the publicly available \*\*Linux\_2k.log\*\* dataset from LogHub.
-
-
-The dataset is \*\*not included\*\* in this repository.
-
-
-Download instructions are available in `sample-data/README.md`.
-
-
-\---
-
-
-\## Future Improvements
-
-
-\- MITRE ATT\&CK mapping
-
-\- GeoIP enrichment
-
-\- Fail2Ban integration
-
-\- AI-assisted alert summarisation
-
-\- Interactive Splunk dashboards
-
+The project therefore provides a practical demonstration of **SOC monitoring, threat detection, log analysis, security automation, and incident investigation skills**.
