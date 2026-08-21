@@ -169,7 +169,7 @@ index="linux\_logs" source="Linux\_2k.log"
 \### Key Findings
 
 
-\- 608 authentication-related events identified.
+\- 607 authentication-related events identified.
 
 \- 80 attempts against the `root` account from `150.183.249.110`.
 
@@ -208,7 +208,7 @@ index="linux\_logs" source="Linux\_2k.log"
 
 | Python Automation | 607 suspicious events detected |
 
-| Splunk SIEM | 608 correlated security events |
+| Splunk SIEM | 607 correlated security events |
 
 
 Together these approaches demonstrate how manual investigation, scripting, and SIEM tools complement each other during security monitoring.
