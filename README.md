@@ -132,11 +132,6 @@ index="linux_logs" source="Linux_2k.log"
 * **23 attempts** originated from `207.243.167.114`.
 * Short bursts of repeated authentication attempts indicated **automated brute-force behaviour**.
 
----
-
-# Splunk Screenshots
-
-
 
 ---
 
