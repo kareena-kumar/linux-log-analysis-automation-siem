@@ -2,6 +2,9 @@
 
 > A cybersecurity project demonstrating **SOC analyst workflows** through manual Linux log investigation, Python automation, and Splunk SIEM analysis.
 
+  ![Status: Completed](https://img.shields.io/badge/Status-Completed-brightgreen)
+![Difficulty: ★★☆☆☆](https://img.shields.io/badge/Difficulty-%E2%98%85%E2%98%85%E2%98%86%E2%98%86%E2%98%86-yellow)
+
 ---
 
 ## Overview
@@ -18,13 +21,13 @@ Using a publicly available Linux authentication dataset from **LogHub**, the pro
 
 ## Technologies Used
 
-| Technology                          | Purpose                                                                  |
-| ----------------------------------- | ------------------------------------------------------------------------ |
-| **Python**                          | Automated Linux log analysis and exported suspicious events to CSV       |
-| **Splunk Enterprise**               | SIEM analysis, event correlation, and authentication log investigation   |
-| **Linux Authentication Logs**       | Investigated SSH authentication failures and brute-force activity        |
-| **Git & GitHub**                    | Version control, documentation, and project management                   |
-| **CSV**                             | Structured export of suspicious authentication events for reporting      |
+| Technology | Purpose |
+| --------- | ----------- |
+| **Python**  | Automated Linux log analysis and exported suspicious events to CSV  |
+| **Splunk Enterprise**  | SIEM analysis, event correlation, and authentication log investigation  |
+| **Linux Authentication Logs**   | Investigated SSH authentication failures and brute-force activity  |
+| **Git & GitHub**   | Version control, documentation, and project management   |
+| **CSV**  | Structured export of suspicious authentication events for reporting  |
 
 ---
 
@@ -179,21 +182,6 @@ sample-data/README.md
 
 ---
 
-# Future Improvements
-
-Potential extensions to this project include:
-
-* **MITRE ATT&CK technique mapping**
-* **GeoIP enrichment**
-* **Fail2Ban integration**
-* **AI-assisted security alert summarisation**
-* **Automated threat-intelligence enrichment**
-* **Interactive Splunk dashboards**
-* **Automated incident reports**
-* **Real-time log monitoring**
-
----
-
 ## Project Takeaways
 
 This project provided practical experience across the security monitoring lifecycle, from **raw log investigation and threat identification through to automated detection and SIEM-based visualisation**.
@@ -208,3 +196,18 @@ It demonstrates the ability to:
 * Communicate technical findings through structured reporting
 
 The project therefore provides a practical demonstration of **SOC monitoring, threat detection, log analysis, security automation, and incident investigation skills**.
+
+---
+
+## Project Scorecard
+
+![Architecture: 3/5](https://img.shields.io/badge/Architecture-3/5-blue)
+![Technical Depth: 4/5](https://img.shields.io/badge/Technical%20Depth-4/5-lightblue)
+![Problem Solving: 4/5](https://img.shields.io/badge/Problem%20Solving-4/5-green)
+![Documentation: 5/5](https://img.shields.io/badge/Documentation-5/5-brightgreen)
+![Practical Relevance: 5/5](https://img.shields.io/badge/Relevance-5/5-purple)
+![Difficulty: ★★☆☆☆](https://img.shields.io/badge/Difficulty-%E2%98%85%E2%98%85%E2%98%86%E2%98%86%E2%98%86-yellow)
+
+### **Overall Score**
+![Overall: 21/25](https://img.shields.io/badge/Overall-21/25-success)
+
