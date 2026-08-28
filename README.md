@@ -161,26 +161,6 @@ Together, these approaches demonstrate how **manual investigation, scripting, an
 
 ---
 
-# Dataset
-
-This project uses the publicly available **Linux_2k.log** dataset from **LogHub**.
-
-The original dataset can be found here:
-
-**[LogHub – Linux Log Dataset](https://github.com/logpai/loghub/tree/master/Linux)**
-
-The dataset is **not included in this repository**.
-
-For instructions on obtaining and using the dataset, see:
-
-```text
-sample-data/README.md
-```
-
-> **Dataset attribution:** The Linux log dataset is provided by LogHub. This repository uses the dataset for educational and cybersecurity analysis purposes.
-
----
-
 ## Project Takeaways
 
 This project provided practical experience across the security monitoring lifecycle, from **raw log investigation and threat identification through to automated detection and SIEM-based visualisation**.
@@ -210,3 +190,22 @@ The project therefore provides a practical demonstration of **SOC monitoring, th
 ### **Overall Score**
 ![Overall: 21/25](https://img.shields.io/badge/Overall-21/25-success)
 
+---
+
+# Dataset
+
+This project uses the publicly available **Linux_2k.log** dataset from **LogHub**.
+
+The original dataset can be found here:
+
+**[LogHub – Linux Log Dataset](https://github.com/logpai/loghub/tree/master/Linux)**
+
+The dataset is **not included in this repository**.
+
+For instructions on obtaining and using the dataset, see:
+
+```text
+sample-data/README.md
+```
+
+> **Dataset attribution:** The Linux log dataset is provided by LogHub. This repository uses the dataset for educational and cybersecurity analysis purposes.
