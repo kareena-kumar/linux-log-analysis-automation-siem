@@ -8,13 +8,13 @@
 
 ## Overview
 
-This project demonstrates how a **Security Operations Centre (SOC) analyst** can investigate Linux authentication logs using three complementary approaches:
+This repository documents my end-to-end cybersecurity project demonstrating core SOC analyst workflows. In this project, I investigated Linux authentication logs using three complementary approaches:  
 
-1. **Manual log investigation**
-2. **Python automation**
-3. **Splunk SIEM analysis and visualisation**
+1. **Manual log analysis**
+2. **Python script automation** and
+3. **Splunk SIEM visualisation**
 
-Using a publicly available Linux authentication dataset from **LogHub**, the project identifies repeated SSH brute-force attempts, extracts **Indicators of Compromise (IoCs)**, automates suspicious-event detection using Python, and visualises attack patterns using **Splunk Enterprise**.
+Using a publicly available Linux authentication dataset from **LogHub**, I identified repeated SSH brute-force attempts, extracted Indicators of Compromise (IoCs), automated suspicious event detection using Python, and built visual attack dashboards in Splunk Enterprise.
 
 ---
 
@@ -69,13 +69,13 @@ linux-log-analysis-automation-siem/
 
 # Stage 1 – Manual Log Analysis
 
-The first stage involved manually reviewing raw Linux authentication logs to identify suspicious authentication activity and potential indicators of compromise.
+In the first phase of this project, I manually reviewed raw Linux authentication logs to uncover suspicious activity and identify potential security threats.
 
 ## Key Findings
 
-* Identified a **high-volume, automated SSH brute-force attack**.
-* Repeated failed login attempts targeted both the `root` account and unknown usernames.
-* Multiple authentication attempts originated from external IP addresses.
+* **Brute-Force Detection:** I uncovered a high-volume, automated SSH brute-force attack.
+* **Target Accounts:** I observed repeated failed login attempts targeting both the `root` administrative account and various non-existent usernames.
+* **Origin:** I verified that multiple malicious authentication attempts originated from external IP addresses.
 
 ### Primary Indicators of Compromise
 
@@ -84,31 +84,27 @@ The first stage involved manually reviewing raw Linux authentication logs to ide
 
 ## Recommended Actions
 
-Based on the observed activity, the following security controls were recommended:
-
-* Block identified malicious IP addresses.
-* Implement automated authentication rate limiting.
-* Deploy intrusion prevention tools such as **Fail2Ban**.
-* Monitor authentication logs for repeated failed-login patterns.
+Based on my findings during the manual investigation, I recommended the following controls:
+1. Block identified malicious IP addresses at the firewall level.
+2. Implement automated authentication rate limiting.
+3. Deploy host-based intrusion prevention tools such as **Fail2Ban** - monitors system logs for repeated failed login attempts and temporarily blocks the offending IP addresses using firewall rules. 
+5. Set up persistent log monitoring for repeated failed login patterns.
 
 ---
 
 # Stage 2 – Python Automation
 
-The second stage automated the manual investigation process using Python.
-
-The script scans Linux authentication logs for patterns associated with suspicious authentication activity and extracts relevant events for further investigation.
+To streamline the investigation process, I wrote a custom Python script (`src/log_analysis.py`) to automate pattern detection across large log files.
 
 ## Detection Features
 
 The script identifies:
 
-* **Failed password attempts**
-* **Authentication failures**
-* **Invalid users**
-* Suspicious authentication events from large log files
+* Failed password attempts
+* General authentication failures
+* Invalid user login attempts
 
-The detected events are exported to a **CSV file** for further analysis and reporting.
+Once parsed, the script automatically exports all detected events into a structured CSV file (`reports/suspicious_log_entries.csv`).
 
 ## Result
 
@@ -120,15 +116,12 @@ This demonstrates how scripting can reduce the time required to manually identif
 
 # Stage 3 – Splunk SIEM Analysis
 
-The third stage involved ingesting the Linux authentication logs into **Splunk Enterprise** to simulate a Security Operations Centre monitoring workflow.
+In the final stage, I ingested the Linux authentication dataset into **Splunk Enterprise** to simulate a real-world Security Operations Centre (SOC) monitoring workflow.
 
-Splunk was used to:
-
-* Search and filter authentication events
-* Aggregate security events
-* Identify repeated authentication attempts
-* Correlate activity by source IP and username
-* Visualise suspicious authentication patterns
+Using Splunk, I:
+* Created targeted Search Processing Language (SPL) queries to filter authentication events.
+* Aggregated security events by source IP and targeted usernames.
+* Correlated short bursts of failed logins to confirm automated brute-force behaviour.
 
 ## Example SPL Query
 
@@ -153,28 +146,21 @@ index="linux_logs" source="Linux_2k.log"
 
 | Method                | Outcome                                                       |
 | --------------------- | ------------------------------------------------------------- |
-| **Manual Analysis**   | Identified an SSH brute-force attack and extracted IoCs       |
-| **Python Automation** | Automatically detected **607 suspicious events**              |
-| **Splunk SIEM**       | Aggregated and analysed **607 authentication-related events** |
-
-Together, these approaches demonstrate how **manual investigation, scripting, and SIEM technologies complement one another in a SOC environment**.
+| **Manual Analysis**   | I manually identified the SSH brute-force attack vectors and extracted core IoCs.  |
+| **Python Automation** | I automated log parsing to instantly catch 607 suspicious entries. |
+| **Splunk SIEM**       | I aggregated all 607 events into structured visual dashboards and IP frequency counts. |
 
 ---
 
-## Project Takeaways
+## Project Reflections & Takeaways
 
 This project provided practical experience across the security monitoring lifecycle, from **raw log investigation and threat identification through to automated detection and SIEM-based visualisation**.
 
-It demonstrates the ability to:
-
-* Investigate security events using Linux logs
-* Identify suspicious authentication behaviour
-* Extract and document IoCs
-* Automate repetitive security-analysis tasks with Python
-* Query and analyse security events using Splunk
-* Communicate technical findings through structured reporting
-
-The project therefore provides a practical demonstration of **SOC monitoring, threat detection, log analysis, security automation, and incident investigation skills**.
+Key takeaways from this project include: 
+* Hands-on experience investigating Linux authentication events.
+* Translating manual detection steps into efficient Python scripts.
+* Writing SPL queries in Splunk to aggregate and correlate threats.
+* Documenting IoCs and technical findings for clear incident reporting.
 
 ---
 
