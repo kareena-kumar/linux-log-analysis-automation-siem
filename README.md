@@ -1,6 +1,7 @@
 # Linux Log Analysis, Automation & SIEM Visualisation
 ![Status: Completed](https://img.shields.io/badge/Status-Completed-brightgreen)
 ![Difficulty: ★★☆☆☆](https://img.shields.io/badge/Difficulty-%E2%98%85%E2%98%85%E2%98%86%E2%98%86%E2%98%86-yellow)
+[![Time Spent: 16h](https://img.shields.io/badge/Time%20Spent-16h-orange)]()
 
 > A cybersecurity project demonstrating **SOC analyst workflows** through manual Linux log investigation, Python automation, and Splunk SIEM analysis.
 
