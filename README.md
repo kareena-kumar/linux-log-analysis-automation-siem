@@ -49,15 +49,15 @@ Using a publicly available Linux authentication dataset from **LogHub**, I ident
 ```text
 linux-log-analysis-automation-siem/
 │
-├── src/
-│   └── log_analysis.py
-│
 ├── reports/
 │   ├── project_report.pdf
 │   └── suspicious_log_entries.csv
-│
+|
 ├── sample-data/
 │   └── README.md
+|
+├── src/
+│   └── log_analysis.py
 │
 ├── .gitignore
 ├── README.md
