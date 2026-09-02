@@ -56,8 +56,6 @@ linux-log-analysis-automation-siem/
 │   ├── project_report.pdf
 │   └── suspicious_log_entries.csv
 │
-├── screenshots/
-│
 ├── sample-data/
 │   └── README.md
 │
